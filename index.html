@@ -90,7 +90,18 @@
             email: this.user.email,
             timestamp: new Date().toISOString()
           });
-          this.form = { cliente: '', producto: '', monto: '', fecha_factura: '', fecha_cobro: '', estado: '' };
+          this.form = {
+            solicitante: '',
+            producto: '',
+            cantidades: '',
+            destino: '',
+            palets: '',
+            direccion: '',
+            referencia: '',
+            fecha_informe: new Date().toISOString().substr(0, 10),
+            fecha_estimada: '',
+            estado_envio: ''
+          };
           alert("Enviado correctamente");
         }
       }
