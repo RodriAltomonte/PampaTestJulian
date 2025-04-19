@@ -13,22 +13,26 @@
 <body>
   <div id="app" class="container py-4">
     <div v-if="!user" class="text-center">
-      <h2 class="mb-4">Iniciar sesión</h2>
+      <h2 class="mb-4">Iniciar sesión en Vientos Pampa</h2>
       <button class="btn btn-primary" @click="login">Login con Google</button>
     </div>
 
     <div v-else>
-      <h4 class="mb-3">Hola, {{ user.displayName }}</h4>
+      <h4 class="mb-3">Hola, {{ user.displayName }}, Completa el formulario</h4>
       <form @submit.prevent="enviar">
-        <input v-model="form.cliente" class="form-control mb-2" placeholder="Cliente">
+        <input v-model="form.fecha_informe" type="date" class="form-control mb-2">
+        <input v-model="form.solicitante" class="form-control mb-2" placeholder="Solicitante">
         <input v-model="form.producto" class="form-control mb-2" placeholder="Producto">
-        <input v-model="form.monto" type="number" class="form-control mb-2" placeholder="Monto">
-        <input v-model="form.fecha_factura" type="date" class="form-control mb-2">
-        <input v-model="form.fecha_cobro" type="date" class="form-control mb-2">
-        <select v-model="form.estado" class="form-control mb-3">
-          <option disabled value="">Estado</option>
-          <option>Devengado</option>
-          <option>Percibido</option>
+        <input v-model="form.cantidades" type="number" class="form-control mb-2" placeholder="Cantidades">
+        <input v-model="form.destino" class="form-control mb-2" placeholder="Destino">
+        <input v-model="form.palets" type="number" class="form-control mb-2" placeholder="Palets">
+        <input v-model="form.direccion" class="form-control mb-2" placeholder="Direccion">
+        <input v-model="form.referencia" class="form-control mb-2" placeholder="Referencia">
+        <input v-model="form.fecha_estimada" type="date" class="form-control mb-2">
+        <select v-model="estado_envio" class="form-control mb-3">
+          <option disabled value="">Envio</option>
+          <option>Pendiente</option>
+          <option>Completado</option>
         </select>
         <button type="submit" class="btn btn-success">Enviar</button>
       </form>
@@ -54,12 +58,16 @@
       data: {
         user: null,
         form: {
-          cliente: '',
+          solicitante: '',
           producto: '',
-          monto: '',
-          fecha_factura: '',
-          fecha_cobro: '',
-          estado: ''
+          cantidades: '',
+          destino: '',
+          palets: '',
+          direccion: '',
+          referencia: '',
+          fecha_informe: new Date().toISOString().substr(0, 10),
+          fecha_estimada: new Date().toISOString().substr(0, 10),
+          estado_envio: ''
         }
       },
       created() {
