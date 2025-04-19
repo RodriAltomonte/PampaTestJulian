@@ -20,6 +20,7 @@
     <div v-else>
       <h4 class="mb-3">Hola, {{ user.displayName }}, Completa el formulario</h4>
       <form @submit.prevent="enviar">
+        <label class="form-label">Fecha informe:</label>
         <input v-model="form.fecha_informe" type="date" class="form-control mb-2">
         <input v-model="form.solicitante" class="form-control mb-2" placeholder="Solicitante">
         <input v-model="form.producto" class="form-control mb-2" placeholder="Producto">
@@ -28,6 +29,7 @@
         <input v-model="form.palets" type="number" class="form-control mb-2" placeholder="Palets">
         <input v-model="form.direccion" class="form-control mb-2" placeholder="Direccion">
         <input v-model="form.referencia" class="form-control mb-2" placeholder="Referencia">
+        <label class="form-label">Fecha estimada:</label>
         <input v-model="form.fecha_estimada" type="date" class="form-control mb-2">
         <select v-model="form.estado_envio" class="form-control mb-3">
           <option disabled value="">Envio</option>
